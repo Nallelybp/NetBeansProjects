@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Extract the conditional means of the random effects</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for ranef_uvcov {lme4GS}"><tr><td>ranef_uvcov {lme4GS}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Extract the conditional means of the random effects</h2>
+
+<h3>Description</h3>
+
+<p>A function to extract the conditional means of the random effects from a fitted model object.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+  ranef_uvcov(object)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+<p>is an object returned by lmer_uvcov.</p>
+</td></tr>  
+</table>
+
+
+<h3>Details</h3>
+
+<p>The function ranef extract the conditional means for the liner mixed effects model:
+</p>
+y=X&beta; + Z<sub>1</sub><sup>&ast;</sup> u<sub>1</sub><sup>&ast;</sup>+...+Z<sub>q</sub><sup>&ast;</sup> u<sub>q</sub><sup>&ast;</sup>+e,
+<p>where  Z<sub>j</sub><sup>&ast;</sup>=Z<sub>j</sub> L<sub>j</sub>, with L<sub>j</sub> from Cholesky
+factorization for K<sub>j</sub>. Alternatively,
+Z<sub>j</sub><sup>&ast;</sup>=Z<sub>j</sub>&Gamma;<sub>j</sub>&Lambda;<sup>1/2</sup>, with
+&Gamma;<sub>j</sub> and 
+&Lambda;<sub>j</sub> 
+the matrix of eigen-vectors and eigen-values obtained from the eigen-value decomposition 
+for K<sub>j</sub>. So, 
+the conditional means of the random effects in the linear mixed effects model:
+</p>
+y=X&beta; + Z<sub>1</sub> u<sub>1</sub> + ... + Z<sub>q</sub> u<sub>q</sub> + e,
+<p>are obtained as follows: &ucirc;<sub>j</sub>=L<sub>j</sub>&ucirc;<sub>j</sub><sup>&ast;</sup> if the Cholesky 
+factorization is used or
+&ucirc;<sub>j</sub>=&Gamma;<sub>j</sub>&Lambda;<sub>j</sub><sup>1/2</sup>&ucirc;<sub>j</sub><sup>&ast;</sup> if 
+the the eigen-value decomposition is used.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A list of data frames, one for each grouping factor.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Paulino Perez-Rodriguez
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+## Not run: 
+  library(BGLR)
+  library(lme4GS)
+
+  #Example 1, wheat 
+  data(wheat)
+  X&lt;-wheat.X
+  Z&lt;-scale(X,center=TRUE,scale=TRUE)
+  G&lt;-tcrossprod(Z)/ncol(Z)
+  A&lt;-wheat.A
+  rownames(G)&lt;-colnames(G)&lt;-rownames(A)
+  y&lt;-wheat.Y[,1]
+
+  #id a vector with ids
+  random&lt;-list(mrk=list(K=G,id=rownames(G)),
+               ped=list(K=A,id=rownames(A)))
+
+  out&lt;-lmer_uvcov(y,fixed="1",random=random)
+
+  out2&lt;-ranef_uvcov(out)
+
+  str(out2)
+
+
+## End(Not run)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>lme4GS</em> version 1.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,12 @@
+lme4GS-package	lme4GS-package
+lme4GS	lme4GS-package
+lmer_uvcov	lmer_uvcov
+maize.G	maize.G
+maize.Pheno	maize.Pheno
+predict_uvcov	predict_uvcov
+ranef_uvcov	ranef_uvcov
+theta_optim	theta_optim
+wheat.Pedigree	wheat.Pedigree
+wheat.Pheno	wheat.Pheno
+wheat.sets	wheat.sets
+wheat.X	wheat.X

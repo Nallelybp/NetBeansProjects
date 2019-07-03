@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Users\NBAUTISTA\Documents\NetBeansProjects\LME4GS\dist\LME4GS.jar</jar>
+  <outfile>C:\Users\NBAUTISTA\Documents\NetBeansProjects\LME4GS\dist\lme4GS.exe</outfile>
+  <errTitle>You have to download the Java Version 8</errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>true</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>C:\Users\NBAUTISTA\Documents\NetBeansProjects\LME4GS\logolme4gs.ico</icon>
+  <singleInstance>
+    <mutexName>lme4GS</mutexName>
+    <windowTitle></windowTitle>
+  </singleInstance>
+  <jre>
+    <path></path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <minVersion>1.8.0_101</minVersion>
+    <maxVersion>1.8.0_211</maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64</runtimeBits>
+  </jre>
+  <splash>
+    <file>C:\Users\NBAUTISTA\Documents\NetBeansProjects\LME4GS\Images\logolme4gs.bmp</file>
+    <waitForWindow>true</waitForWindow>
+    <timeout>60</timeout>
+    <timeoutErr>true</timeoutErr>
+  </splash>
+  <versionInfo>
+    <fileVersion>1.0.0.0</fileVersion>
+    <txtFileVersion>1.0.0.0</txtFileVersion>
+    <fileDescription>Linear Mixed-Effects Models for Genomic Selection (lme4GS)</fileDescription>
+    <copyright>GNU General Public License, version 3 (GPL-3.0)</copyright>
+    <productVersion>1.0.0.0</productVersion>
+    <txtProductVersion>1.0.0.0</txtProductVersion>
+    <productName>lme4GS</productName>
+    <companyName>CIMMYT, Int.</companyName>
+    <internalName>CIMMYT, Int.</internalName>
+    <originalFilename>lme4GS.exe</originalFilename>
+    <trademarks>CIMMYT</trademarks>
+    <language>ENGLISH_US</language>
+  </versionInfo>
+  <messages>
+    <startupErr>An error occurred while starting the application.</startupErr>
+    <bundledJreErr>This application was configured to use a bundled Java Runtime Environment but the runtime is missing or corrupted.</bundledJreErr>
+    <jreVersionErr>This application requires a Java Runtime Environment</jreVersionErr>
+    <launcherErr>The registry refers to a nonexistent Java Runtime Environment installation or the runtime is corrupted.</launcherErr>
+    <instanceAlreadyExistsMsg>An application instance is already running.</instanceAlreadyExistsMsg>
+  </messages>
+</launch4jConfig>

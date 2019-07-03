@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Obtain BLUPs for new levels of random effects with user...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for predict_uvcov {lme4GS}"><tr><td>predict_uvcov {lme4GS}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Obtain BLUPs for new levels of random effects with user specified variance covariance-matrices.</h2>
+
+<h3>Description</h3>
+
+<p>Obtain BLUPs for new levels of random effects with user specified variance covariance-matrices.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+  predict_uvcov(object,newrandom)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+<p>is an object returned by lmer_uvcov.</p>
+</td></tr>
+<tr valign="top"><td><code>newrandom</code></td>
+<td>
+<p>newrandom two level list with ids to be predicted and variance covariance matrix that contains information of 
+these ids and the ids used to fit the model.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Assume that the random effect 
+u<sub>j</sub> &#126; N(0, &sigma;<sup>2</sup><sub>j</sub>K<sub>j</sub>) and the matrix K<sub>j</sub> is partitioned as follows:
+</p>
+u<sub>j</sub>=(u<sub>j1</sub> u<sub>j2</sub>)'
+<p>and
+</p>
+<p><img src="../help/figures/Kj.png" alt="Kj.png" />
+</p>
+<p>The BLUP for <i>u[j2]</i> can be obtained as:
+</p>
+E(u<sub>j2</sub>|y<sub>1</sub>)=K<sub>j21</sub>K<sub>j11</sub><sup>-1</sup>&ucirc;<sub>j1</sub>
+
+
+<h3>Author(s)</h3>
+
+<p>Paulino Perez-Rodriguez
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+## Not run: 
+  library(BGLR)
+  library(lme4GS)
+
+  #Example 1, wheat 
+  data(wheat)
+  X&lt;-wheat.X
+  Z&lt;-scale(X,center=TRUE,scale=TRUE)
+  G&lt;-tcrossprod(Z)/ncol(Z)
+  A&lt;-wheat.A
+  rownames(G)&lt;-colnames(G)&lt;-rownames(A)
+  y&lt;-wheat.Y[,1]
+
+  #Predict 10/100 of records selected at random. 
+  #The data were partitioned in 10 groups at random
+  #and we predict individuals in group 2.
+
+  fold&lt;-2
+  y_trn&lt;-y[wheat.sets!=fold]
+  y_tst&lt;-y[wheat.sets==fold]
+
+  #######################################################################################
+  #Marker based prediction
+  #######################################################################################
+
+  random&lt;-list(mrk=list(K=G,id=names(y_trn)))
+	
+  out&lt;-lmer_uvcov(y_trn,fixed="1",random=random)
+
+  plot(y_trn,predict(out),xlab="Phenotype",ylab="Pred. Gen. Value")
+
+  #Random effect list for prediction
+  newrandom&lt;-list(mrk=list(K=G,id=names(y)[wheat.sets==fold]))
+
+  blup_tst&lt;-predict_uvcov(out,newrandom)
+  blup_tst&lt;-blup_tst$mrk
+  yHat_tst&lt;-fixef(out)[1]+blup_tst
+  points(y_tst,blup_tst,col="red",pch=19)
+
+  #Correlation in testing set
+  cor(y_tst,yHat_tst)
+
+  #######################################################################################
+  #Pedigree based prediction
+  #######################################################################################
+
+  random&lt;-list(ped=list(K=A,id=names(y_trn)))
+	
+  out&lt;-lmer_uvcov(y_trn,fixed="1",random=random)
+
+  plot(y_trn,predict(out),xlab="Phenotype",ylab="Pred. Gen. Value")
+
+  #Random effect list for prediction
+  newrandom&lt;-list(ped=list(K=A,id=names(y)[wheat.sets==fold]))
+
+  blup_tst&lt;-predict_uvcov(out,newrandom)
+  blup_tst&lt;-blup_tst$ped
+  yHat_tst&lt;-fixef(out)[1]+blup_tst
+  points(y_tst,yHat_tst,col="red",pch=19)
+
+  #Correlation in testing set
+  cor(y_tst,yHat_tst)
+
+
+  #######################################################################################
+  #Markers + Pedigree based prediction
+  #######################################################################################
+ 
+  random&lt;-list(mrk=list(K=G,id=names(y_trn)),
+               ped=list(K=A,id=names(y_trn)))
+	
+  out&lt;-lmer_uvcov(y_trn,fixed="1",random=random)
+
+  plot(y_trn,predict(out),xlab="Phenotype",ylab="Pred. Gen. Value")
+
+  #Random effect list for prediction
+  newrandom&lt;-list(mrk=list(K=G,id=names(y)[wheat.sets==fold]),
+                  ped=list(K=A,id=names(y)[wheat.sets==fold]))
+
+  blup_tst&lt;-predict_uvcov(out,newrandom)
+  blup_tst&lt;-blup_tst$mrk+blup_tst$ped
+  yHat_tst&lt;-fixef(out)[1]+blup_tst
+  points(y_tst,blup_tst,col="red",pch=19)
+
+  #Correlation in testing set
+  cor(y_tst,yHat_tst)
+
+
+## End(Not run)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>lme4GS</em> version 1.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

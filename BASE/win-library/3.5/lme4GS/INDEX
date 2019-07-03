@@ -1,0 +1,16 @@
+lme4GS-package          lme4 for Genomic Selection
+lmer_uvcov              Fits a linear mixed model with user specified
+                        variance covariance-matrices.
+maize.G                 Genomic relationship matrix for maize lines
+maize.Pheno             Phenotypical data for the maize dataset
+predict_uvcov           Obtain BLUPs for new levels of random effects
+                        with user specified variance
+                        covariance-matrices.
+ranef_uvcov             Extract the conditional means of the random
+                        effects
+theta_optim             Selection of bandwidth parameter of Gaussian
+                        kernel.
+wheat.Pedigree          Pedigree infomation for 599 wheat lines
+wheat.Pheno             Phenotypical data for the wheat dataset
+wheat.X                 Molecular markers
+wheat.sets              Sets for cross validation (CV)

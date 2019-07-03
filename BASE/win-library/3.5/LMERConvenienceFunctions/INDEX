@@ -1,0 +1,33 @@
+LMERConvenienceFunctions-package
+                        Model Selection and Post-hoc Analysis for
+                        (G)LMER Models
+bfFixefLMER_F.fnc       Back-fits an LMER model on p-values from ANOVA,
+                        llrt, AIC, BIC, relLik.AIC or relLik.BIC.
+bfFixefLMER_t.fnc       Back-fits an LMER model on absolute t-value
+                        and, optionally, on LLRT.
+cd                      Change directory.
+cdf                     Change directory; list files and directories in
+                        new directory using function 'f'.
+cdup                    Change directory one level up.
+cn                      List the column names of a data frame in matrix
+                        format.
+f                       List files and directories in current
+                        directory.
+ffRanefLMER.fnc         Forward-fit the random effect structure of an
+                        LMER model.
+fitLMER.fnc             Back-fit fixed effects and forward-fit random
+                        effects of an LMER model.
+mcp.fnc                 Model criticism plots.
+mcposthoc.fnc           Posthoc analyses for LMER models using parallel
+                        capabilities.
+pamer.fnc               ANOVA with upper- and lower-bound _p_-values
+                        and R-sqaured values for LMER.
+perSubjectTrim.fnc      Per-subject Trimming of Response Variable.
+plotDensity3d.fnc       Kernel density estimation for two continuous
+                        variables.
+plotLMER.fnc            plot a mer object
+plotLMER3d.fnc          Dynamic 3d plot for 'mer' object.
+plotRaw3d.fnc           Visualize raw surface averages (3d)
+relLik                  Relative log-likehood.
+romr.fnc                Exclude outliers.
+summary.mcposthoc       Summarize a "mcposthoc" object.

@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Selection of bandwidth parameter of Gaussian kernel.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for theta_optim {lme4GS}"><tr><td>theta_optim {lme4GS}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Selection of bandwidth parameter of Gaussian kernel.</h2>
+
+<h3>Description</h3>
+
+<p>Obtain the optimal value of the bandwidth parameter for the Gaussian kernel by cross-validation.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+  theta_optim&lt;-function(y,X)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>y</code></td>
+<td>
+<p>(numeric, <i>n</i>) the data-vector (NAs not allowed).</p>
+</td></tr>
+<tr valign="top"><td><code>X</code></td>
+<td>
+<p>A matrix, <i>n</i> <i>p</i> that specifies the markers.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A list that contains
+</p>
+<table summary="R valueblock">
+<tr valign="top"><td><code>theta</code></td>
+<td>
+<p>A vector that specifies the different values of theta.</p>
+</td></tr>
+<tr valign="top"><td><code>theta.max</code></td>
+<td>
+<p>The optimal value of theta that maximizes the log-likelihood.</p>
+</td></tr>
+<tr valign="top"><td><code>LL</code></td>
+<td>
+<p>A vector that specifies the values of the likelihood with its corresponding values of theta.</p>
+</td></tr>
+<tr valign="top"><td><code>max.LL</code></td>
+<td>
+<p>The maximum value of the log-likelihood.</p>
+</td></tr>
+<tr valign="top"><td><code>K</code></td>
+<td>
+<p>Tha Gassuian Kernel compute with the optimal value of theta.</p>
+</td></tr>  
+</table>
+
+
+<h3>Author(s)</h3>
+
+<p>Paulino Perez-Rodriguez
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+## Not run: 
+  library(BGLR)
+  library(lme4GS)
+
+#Example wheat
+
+data(wheat)
+X &lt;- wheat.X 
+A &lt;- wheat.A 
+y &lt;- wheat.Y[,1]
+
+rownames(X) &lt;- rownames(A)
+
+out_res &lt;- theta_optim(y,X)
+
+## End(Not run)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>lme4GS</em> version 1.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,16 @@
+Package: lme4GS
+Type: Package
+Title: lme4 for Genomic Selection
+Version: 1.0
+Date: 2019-01-26
+Author: Paulino Perez-Rodriguez
+Maintainer: Paulino Perez-Rodriguez <perpdgo@colpos.mx>
+Depends: R (>= 3.5.2), lme4, methods, Matrix
+Description: Fits several model used routinely in Genomic Selection.
+License: GPL (>= 2)
+RemoteType: git2r
+RemoteUrl: https://github.com/perpdgo/lme4GS
+RemoteSha: 655ddc875d8f433cd7092e0fdf981f17849c7a84
+NeedsCompilation: no
+Packaged: 2019-06-01 23:48:38 UTC; NBAUTISTA
+Built: R 3.5.3; ; 2019-06-01 23:48:39 UTC; windows

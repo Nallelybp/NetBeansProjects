@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Fits a linear mixed model with user specified variance...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for lmer_uvcov {lme4GS}"><tr><td>lmer_uvcov {lme4GS}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Fits a linear mixed model with user specified variance covariance-matrices.</h2>
+
+<h3>Description</h3>
+
+<p>Fits a linear mixed model with user specified variance covariance-matrices.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+  lmer_uvcov(y,fixed="1",random,verbose=5L)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>y</code></td>
+<td>
+<p>(numeric, <i>n</i>) the data-vector (NAs not allowed).</p>
+</td></tr>
+<tr valign="top"><td><code>fixed</code></td>
+<td>
+<p>A formula that specifies fixed effects.</p>
+</td></tr>
+<tr valign="top"><td><code>random</code></td>
+<td>
+<p>(list) This is a two-level list used to specify the variance covariance matrixes for random effects.</p>
+</td></tr>
+<tr valign="top"><td><code>verbose</code></td>
+<td>
+<p>verbose output from optimizeLmer function?.</p>
+</td></tr>	
+</table>
+
+
+<h3>Details</h3>
+
+<p>The routine fits the linear mixed model:
+</p>
+y=X&beta; + Z<sub>1</sub> u<sub>1</sub> + ... + Z<sub>q</sub> u<sub>q</sub> + e,
+<p>where <i>y</i> is the response vector, <i>X</i> is the matrix for
+fixed effects,  &beta; is the vector of fixed effects, 
+Z<sub>j</sub> is a design matrix for random effects, 
+u<sub>j</sub> is a vector of random effects, 
+<i>j=1,...,q</i>. We assume that 
+u<sub>j</sub>&#126;N(0,&sigma;<sup>2</sup><sub>j</sub> K <sub>j</sub>),
+<i>j=1,...,q</i> and 
+e&#126;N(0,&sigma;<sup>2</sup><sub>e</sub>I).
+</p>
+<p>The linear mixed model can be re-written as:
+</p>
+y=y=X&beta; + Z<sub>1</sub><sup>&ast;</sup> u<sub>1</sub><sup>&ast;</sup>+...+Z<sub>q</sub><sup>&ast;</sup> u<sub>q</sub><sup>&ast;</sup>+e,
+<p>where Z<sub>j</sub><sup>&ast;</sup>=Z<sub>j</sub> L<sub>j</sub>, with L<sub>j</sub> from Cholesky 
+factorization for K<sub>j</sub>. Alternatively,
+Z<sub>j</sub><sup>&ast;</sup>=Z<sub>j</sub>&Gamma;<sub>j</sub>&Lambda;<sup>1/2</sup>, with 
+&Gamma;<sub>j</sub> and 
+&Lambda;<sub>j</sub> the matrix of 
+eigen-vectors and eigen-values obtained from the eigen-value decomposition 
+for K<sub>j</sub>. The factorization method for
+K<sub>j</sub> is selected automatically at runtime. 
+</p>
+
+
+<h3>Value</h3>
+
+<p>An object of class merMod (more specifically,
+an object of <em>subclass</em> <code>lmerMod</code>), for which many methods
+are available (e.g. <code>methods(class="merMod")</code>)
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Paulino Perez-Rodriguez
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+## Not run: 
+  library(BGLR)
+  library(lme4GS)
+
+  #Example 1, wheat 
+  data(wheat)
+  X&lt;-wheat.X
+  Z&lt;-scale(X,center=TRUE,scale=TRUE)
+  G&lt;-tcrossprod(Z)/ncol(Z)
+  A&lt;-wheat.A
+  rownames(G)&lt;-colnames(G)&lt;-rownames(A)
+  y&lt;-wheat.Y[,1]
+
+  #id a vector with ids
+  random&lt;-list(mrk=list(K=G,id=rownames(G)),
+               ped=list(K=A,id=rownames(A)))
+
+  out&lt;-lmer_uvcov(y,fixed="1",random=random)
+
+  summary(out)
+
+  plot(y,predict(out))
+
+  #Example 2, mice
+
+  data(mice)
+
+  y&lt;-mice.pheno$Obesity.BMI
+  y&lt;-scale(y,center=TRUE,scale=TRUE)
+  y&lt;-as.vector(y)
+
+  X&lt;-mice.X
+  Z&lt;-scale(X,center=TRUE,scale=TRUE)
+  G&lt;-tcrossprod(Z)/ncol(Z)
+
+  gender&lt;-mice.pheno$GENDER
+  litter&lt;-mice.pheno$Litter
+  cage&lt;-mice.pheno$cage
+
+  fixed&lt;-"1+gender+litter"
+
+  #K=NULL means that we are using the identity matrix
+  random&lt;-list(cage=list(K=NULL,id=cage),
+	           mrk=list(K=G,id=rownames(G)))
+
+  out&lt;-lmer_uvcov(y,fixed=fixed,random=random)
+
+  plot(y,predict(out))
+
+## End(Not run)
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>lme4GS</em> version 1.0 <a href="00Index.html">Index</a>]</div>
+</body></html>
