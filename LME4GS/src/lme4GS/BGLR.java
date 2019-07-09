@@ -421,6 +421,8 @@ public class BGLR extends javax.swing.JFrame {
         codeR = mainPath + "\\RCodes" + "\\Impute.R";
         re.assign("codeR",codeR);
         re.eval("source(codeR)");
+        System.out.print("re"+re.toString());
+        
        
         
         
@@ -690,6 +692,7 @@ public class BGLR extends javax.swing.JFrame {
     }
     
     public void CargarMarkers(){
+        try{
         Analyzing.setVisible(false);
         Loading.setVisible(true);
         Recoding.setVisible(false);
@@ -842,6 +845,9 @@ public class BGLR extends javax.swing.JFrame {
             Markername.setText(filename);
         }
         re.eval("gc()");
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
     
     public void CargarRelationship(){
@@ -1676,7 +1682,7 @@ public class BGLR extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(LogoBSU, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                    .addComponent(LogoBSU, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
                     .addComponent(LogoCIMMYT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(8, 8, 8))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -1821,7 +1827,7 @@ public class BGLR extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(MethodpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(OutputFolder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(OutputFolder, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                             .addComponent(PlotFormatBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MethodpanelLayout.createSequentialGroup()
                         .addComponent(LoadPedigree, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
@@ -1881,7 +1887,7 @@ public class BGLR extends javax.swing.JFrame {
                     .addComponent(SeePedigree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Pedigreename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(MethodpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1956,7 +1962,7 @@ public class BGLR extends javax.swing.JFrame {
                                 .addComponent(CVbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(22, 22, 22)
                                 .addComponent(CVbutton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 4, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(SVBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -2062,7 +2068,7 @@ public class BGLR extends javax.swing.JFrame {
                 .addComponent(ScrollVariables, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SelectResponses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2259,8 +2265,8 @@ public class BGLR extends javax.swing.JFrame {
             BigPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BigPanelLayout.createSequentialGroup()
                 .addGroup(BigPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Fix_Eff, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
-                    .addComponent(Ran_Eff, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                    .addComponent(Fix_Eff, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 406, Short.MAX_VALUE)
+                    .addComponent(Ran_Eff, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 406, Short.MAX_VALUE)
                     .addComponent(ResponsesPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Methodpanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Variablespanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -2281,7 +2287,7 @@ public class BGLR extends javax.swing.JFrame {
         Info.setColumns(20);
         Info.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         Info.setRows(5);
-        Info.setText("     \n     Welcome to lme4GS (lme for Genomic Selection). Version 1.0 (2019-06-25)\n     Copyright © 2016 Centro Internacional de Mejoramiento de Maíz y Trigo (CIMMYT).\n     \n     \n     Authors:\n     Nallely Bautista\n     Paulino Pérez\n     Francisco Rodríguez\n     Juan Burgueño\n     Gregorio Alvarado\n     Angela Pacheco\n     José Crossa\n     \n     \n     This program is based in some components from Java, developed by ORACLE AMERICA, INC. and R, developed by Kurt Hornik. Any Java \n     component of this program is hereby licensed under the Oracle Binary Code License Agreement for the Java SE Platform Products and \n     JavaFX made available by Oracle (available at http://www.oracle.com/technetwork/java/javase/terms/license/index.html). Any R\n     component of this program as well as the program as a whole developed by CIMMYT are hereby licensed as per the terms of the GNU\n     General Public License version 3(available at http://www.gnu.org/licenses/gpl-3.0.html), as specified below.\n\n     This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published\n     by the Free Software Foundation; either version 3 of the License, or any later version.\n\n     This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of\n     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n\n     You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., \n     51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.\n\n     For further information, please contact CIMMYT at  CIMMYT-Knowledge-Center@cgiar.org or at Km. 45 Carretera Mexico-Veracruz, El Batán,\n     Texcoco, Estado de México, México, C.P. 56237.\n\n     We have invested a lot of time and effort in creating lme4GS, please cite it when using it for data analysis.\n");
+        Info.setText("     \n     Welcome to lme4GS (lme for Genomic Selection). Version 1.0 (2019-06-25)\n     Copyright © 2016 Centro Internacional de Mejoramiento de Maíz y Trigo (CIMMYT).\n     \n     \n     Authors:\n     Nallely Bautista\n     Paulino Pérez\n     Francisco Rodríguez\n     Angela Pacheco\n     Juan Burgueño\n     Gregorio Alvarado\n     José Crossa\n     \n     \n     This program is based in some components from Java, developed by ORACLE AMERICA, INC. and R, developed by Kurt Hornik. Any Java \n     component of this program is hereby licensed under the Oracle Binary Code License Agreement for the Java SE Platform Products and \n     JavaFX made available by Oracle (available at http://www.oracle.com/technetwork/java/javase/terms/license/index.html). Any R\n     component of this program as well as the program as a whole developed by CIMMYT are hereby licensed as per the terms of the GNU\n     General Public License version 3(available at http://www.gnu.org/licenses/gpl-3.0.html), as specified below.\n\n     This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published\n     by the Free Software Foundation; either version 3 of the License, or any later version.\n\n     This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of\n     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n\n     You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., \n     51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.\n\n     For further information, please contact CIMMYT at  CIMMYT-Knowledge-Center@cgiar.org or at Km. 45 Carretera Mexico-Veracruz, El Batán,\n     Texcoco, Estado de México, México, C.P. 56237.\n\n     We have invested a lot of time and effort in creating lme4GS, please cite it when using it for data analysis.\n");
         InfoPanel.setViewportView(Info);
 
         jScrollPane1.setBackground(new java.awt.Color(204, 204, 204));
@@ -2338,7 +2344,7 @@ public class BGLR extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel19)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2424,10 +2430,10 @@ public class BGLR extends javax.swing.JFrame {
                         .addComponent(ResultsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(BigPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(InfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addComponent(InfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(PanelBar, javax.swing.GroupLayout.DEFAULT_SIZE, 1239, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1239, Short.MAX_VALUE)
+            .addComponent(PanelBar, javax.swing.GroupLayout.DEFAULT_SIZE, 1251, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1251, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3419,10 +3425,29 @@ public class BGLR extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_GenotypeBoxActionPerformed
 
+    
+    private static void loadVariables (){
+        String version = System.getProperty("sun.arch.data.model");
+        String r_home = "C:\\lme4GS\\BASE\\R-3.5\\";
+        String jri_path;
+        String r_path;
+        if("64".equals(version)){    
+            jri_path= "C:\\lme4GS\\BASE\\win-library\\3.5\\rJava\\jri\\x64\\";
+            r_path= "C:\\lme4GS\\BASE\\R-3.5\\bin\\x64\\";
+        }else{
+            jri_path = "C:\\lme4GS\\BASE\\win-library\\3.5\\rJava\\jri\\i386\\";
+            r_path = "C:\\lme4GS\\BASE\\R-3.5\\bin\\i386\\";
+        }
+        // create the process builder
+        ProcessBuilder pb = new ProcessBuilder(); 
+        pb.environment().put("R_HOME", r_home);
+        pb.environment().put("Path", jri_path + ";" + r_path );
+    }
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {        
+    public static void main(String args[]) {
+       // loadVariables();
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -3444,6 +3469,8 @@ public class BGLR extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(BGLR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(BGLR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (Exception ex){
+            ex.printStackTrace();
         }
         //</editor-fold>
 
